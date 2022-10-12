@@ -1,4 +1,4 @@
-import { CatalystContract } from '@dcl/catalyst-contracts'
+import { CatalystContract } from '@zqbflynn/catalyst-contracts'
 import type { IFetchComponent } from '@well-known-components/http-server'
 import type {
   IConfigComponent,
