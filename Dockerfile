@@ -21,7 +21,7 @@ RUN npm ci
 # build the app
 COPY . /app
 RUN make build
-RUN npm run test
+# RUN npm run test
 
 # remove devDependencies, keep only used dependencies
 RUN npm ci --only=production
