@@ -15,6 +15,7 @@ import { AppComponents, GlobalContext } from './types'
 import { metricDeclarations } from './metrics'
 import { createStatsComponent } from './ports/stats'
 import 'isomorphic-fetch'
+import { networks } from '@zqbflynn/catalyst-node-commons'
 
 const DEFAULT_ETH_NETWORK = 'goerli'
 
@@ -40,9 +41,8 @@ export async function initComponents(): Promise<AppComponents> {
   const fetch = await createFetchComponent()
   const metrics = await createMetricsComponent(metricDeclarations, { server, config })
   const nats = await createNatsComponent({ config, logs })
-  const ethereumProvider = new HTTPProvider(
-    `https://rpc.decentraland.org/${encodeURIComponent(ethNetwork)}?project=catalyst-stats`
-  )
+  const network = networks['zqb']
+  const ethereumProvider = new HTTPProvider(network.http)
 
   const contract = await catalystRegistryForProvider(ethereumProvider)
   const content = await createContentComponent({ config })
